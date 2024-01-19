@@ -21,6 +21,8 @@
                 <th>ACTION</th>
 
             </tr>
+            <!-- by using for loop to fetch specific data from api store it 
+            in table like below -->
             <tr *ngFor="let data of newData; let i = index;" >
                 <td>{{data?.id}}</td>
                 <td>{{data?.FirstName}}</td>
@@ -32,6 +34,7 @@
                     <button class="DeleteUser">Delete User</button>
                 </td>
             </tr>
+            
 
         </table>
     </div>
