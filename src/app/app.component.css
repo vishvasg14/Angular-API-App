@@ -34,12 +34,13 @@ body {
   }
   
   .btns {
-    margin: 20px 0;
+    margin: 20px;
   }
   
   button {
     padding: 10px;
     margin-right: 10px;
+    margin-bottom: 2px;
     cursor: pointer;
     background-color: #4285f4;
     color: white;
