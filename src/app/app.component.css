@@ -1,0 +1,94 @@
+/* h1{ 
+    margin-top: auto;
+    padding-top: 18px;
+    text-align: center;
+    color: blueviolet;
+}
+
+.title{
+    height: 70px;
+    background-color: aquamarine;
+}
+body{
+    margin: 0;
+    padding: 10px;
+} */
+
+
+/* Add some basic styling to improve the appearance */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .title {
+    font-size: 1.5em;
+  }
+  
+  .btns {
+    margin: 20px 0;
+  }
+  
+  button {
+    padding: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    background-color: #4285f4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .dataTable {
+    margin: 20px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #4285f4;
+    color: white;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  /* Style the buttons within the table cells */
+  .EditData, .DeleteUser {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .EditData:hover, .DeleteUser:hover {
+    background-color: #45a049;
+  }
+  .selected-row {
+    background-color: #241d59; 
+  }  

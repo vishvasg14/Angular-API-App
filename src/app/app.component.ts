@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { ApiServiceService } from './serives/api-service.service';
+
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,21 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'my-app';
+
+  newData: any;
+
+
+  constructor(public _apiservice: ApiServiceService) { }
+
+  ngOnInit() {
+    this._apiservice.getdata().subscribe((res: any) => {
+
+      this.newData = res;
+    },
+      (error) => {
+        console.error('error is here', error);
+
+      })
+  }
 }
+
