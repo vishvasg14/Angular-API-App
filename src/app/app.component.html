@@ -7,7 +7,6 @@
 <body>
     <div class="btns">
         <button class="AddUser" type="button">Add User</button>
-
     </div>
     <div class="dataTable">
         <table>
@@ -23,18 +22,18 @@
             </tr>
             <!-- by using for loop to fetch specific data from api store it 
             in table like below -->
-            <tr *ngFor="let data of newData; let i = index;" >
+            <tr *ngFor="let data of newData; let i = index;">
                 <td>{{data?.id}}</td>
                 <td>{{data?.FirstName}}</td>
                 <td>{{data?.PhoneNumber}}</td>
                 <td>{{data?.Email}}</td>
                 <td>{{data?.Vehicle}}</td>
                 <td>{{data?.JobTitle}}</td>
-                <td><button class="EditData" (click)="openEditDialog()">Edit Data</button>
+                <td><button class="EditData" (click)="openDialog()">Edit Data</button>
                     <button class="DeleteUser">Delete User</button>
                 </td>
             </tr>
-            
+
 
         </table>
     </div>

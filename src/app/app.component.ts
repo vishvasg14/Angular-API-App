@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiServiceService } from './serives/api-service.service';
-import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-
 
 
 @Component({
@@ -11,24 +9,12 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  userData = { id: 1, name: 'John Doe', email: 'john@example.com' };
 
   newData: any;
-  constructor(public _apiservice: ApiServiceService, public dialog: MatDialog) { }
+  constructor(public _apiservice: ApiServiceService, public dialog:MatDialog) { }
 
-  openEditDialog(): void {
-    const dialogRef = this.dialog.open(EditDialogComponent, {
-      width: '400px',
-      data: { ...this.userData } // Pass user data to the dialog
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        // Handle changes after the dialog is closed
-        console.log('Dialog closed with result:', result);
-        // Update the user data or perform other actions based on the result
-      }
-    });
+  openDialog(){
+    this.dialog.open(); 
   }
 
   ngOnInit() {
