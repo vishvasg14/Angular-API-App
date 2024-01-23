@@ -6,7 +6,7 @@
 
 <body>
     <div class="btns">
-        <button class="AddUser" type="button">Add User</button>
+        <button mat-raised-button color="primary" (click)="this.sharedService.onClickPopup='addUser';showPopUp()">ADD USER</button>
     </div>
     <div class="dataTable">
         <table>
@@ -29,8 +29,8 @@
                 <td>{{data?.Email}}</td>
                 <td>{{data?.Vehicle}}</td>
                 <td>{{data?.JobTitle}}</td>
-                <td><button class="EditData" (click)="openDialog()">Edit Data</button>
-                    <button class="DeleteUser">Delete User</button>
+                <td><button mat-raised-button class="EditData" (click)="this.sharedService.onClickPopup='editData';showPopUp()">Edit Data</button>
+                    <button mat-raised-button class="DeleteUser" (click)="this.sharedService.onClickPopup='deleteUser';showPopUp()">Delete User</button>
                 </td>
             </tr>
 

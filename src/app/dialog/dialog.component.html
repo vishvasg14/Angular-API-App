@@ -1,1 +1,7 @@
-<p>dialog works!</p>
+<h3 mat-dialog-title *ngIf="sharedService.onClickPopup === 'addUser'">Add User</h3>
+<h3 mat-dialog-title *ngIf="sharedService.onClickPopup === 'deleteUser'">Delete User</h3>
+<h3 mat-dialog-title *ngIf="sharedService.onClickPopup === 'editData'">EDIT DATA</h3>
+
+<div mat-dialog-content>
+
+</div>

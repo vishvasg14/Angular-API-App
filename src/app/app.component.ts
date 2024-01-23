@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ApiServiceService } from './serives/api-service.service';
 import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from './dialog/dialog.component';
+import { SharedService } from './serives/shared.service';
 
 
 @Component({
@@ -11,11 +13,16 @@ import { MatDialog } from '@angular/material/dialog';
 export class AppComponent {
 
   newData: any;
-  constructor(public _apiservice: ApiServiceService, public dialog:MatDialog) { }
+  constructor(public sharedService:SharedService,public _apiservice: ApiServiceService, private dialog:MatDialog) { }
 
-  openDialog(){
-    this.dialog.open(); 
-  }
+  showPopUp(){
+    this.dialog.open(DialogComponent,{
+        width:'60%',
+        height:'400px'
+      })
+    
+  } 
+  
 
   ngOnInit() {
     this._apiservice.getdata().subscribe((res: any) => {
