@@ -6,5 +6,6 @@ import { Injectable } from '@angular/core';
 export class SharedService {
 
   public onClickPopup:string=''
+  public newData:any[]=[]
   constructor() { }
 }

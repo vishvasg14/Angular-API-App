@@ -9,13 +9,15 @@ import { DialogComponent } from './dialog/dialog.component';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    DialogComponent
+    DialogComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,

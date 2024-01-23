@@ -6,7 +6,8 @@
 
 <body>
     <div class="btns">
-        <button mat-raised-button color="primary" (click)="this.sharedService.onClickPopup='addUser';showPopUp()">ADD USER</button>
+        <button mat-raised-button color="primary" (click)="this.sharedService.onClickPopup='addUser';showPopUp()">ADD
+            USER</button>
     </div>
     <div class="dataTable">
         <table>
@@ -22,15 +23,17 @@
             </tr>
             <!-- by using for loop to fetch specific data from api store it 
             in table like below -->
-            <tr *ngFor="let data of newData; let i = index;">
+            <tr *ngFor="let data of sharedService.newData; let i = index;">
                 <td>{{data?.id}}</td>
-                <td>{{data?.FirstName}}</td>
+                <td>
+                    {{data?.FirstName}}
+                </td>
                 <td>{{data?.PhoneNumber}}</td>
                 <td>{{data?.Email}}</td>
                 <td>{{data?.Vehicle}}</td>
                 <td>{{data?.JobTitle}}</td>
-                <td><button mat-raised-button class="EditData" (click)="this.sharedService.onClickPopup='editData';showPopUp()">Edit Data</button>
-                    <button mat-raised-button class="DeleteUser" (click)="this.sharedService.onClickPopup='deleteUser';showPopUp()">Delete User</button>
+                <td><button mat-raised-button class="EditData" (click)="onEdit()">Edit Data</button>
+                    <button mat-raised-button class="DeleteUser" (click)="onDelete(data)">Delete User</button>
                 </td>
             </tr>
 
