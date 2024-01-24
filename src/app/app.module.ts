@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -17,7 +18,7 @@ import { EditUserComponent } from './edit-user/edit-user.component';
   declarations: [
     AppComponent,
     DialogComponent,
-    EditUserComponent
+    EditUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +27,8 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     MatDialogModule,
     FormsModule,
     MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

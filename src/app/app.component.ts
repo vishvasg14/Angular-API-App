@@ -17,6 +17,10 @@ export class AppComponent {
   onSaveData: any;
   newData: any;
 
+  totalItems = 100; 
+  itemsPerPage = 10; 
+  currentPage = 1; 
+
   constructor(public sharedService: SharedService, public _apiservice: ApiServiceService, private dialog: MatDialog) { }
 
   onDelete(data: any): void {
@@ -40,14 +44,14 @@ export class AppComponent {
   showPopUp() {
     this.dialog.open(DialogComponent, {
       width: '60%',
-      height: '400px'
+      height: '550px'
     })
 
   }
   onEdit() {
     this.dialog.open(EditUserComponent, {
       width: '60%',
-      height: '400px'
+      height: '550px'
     })
   }
 
@@ -62,5 +66,10 @@ export class AppComponent {
         console.error('error is here', error);
       })
   }
-}
 
+  pageChanged(event: any): void {
+    this.currentPage = event;
+
+    
+}
+}
