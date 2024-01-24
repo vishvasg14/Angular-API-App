@@ -19,20 +19,18 @@
                 <th>VEHICLE</th>
                 <th>JOB TITLE</th>
                 <th>ACTION</th>
-
             </tr>
             <!-- by using for loop to fetch specific data from api store it 
             in table like below -->
             <tr *ngFor="let data of sharedService.newData; let i = index;">
                 <td>{{data?.id}}</td>
-                <td>
-                    {{data?.FirstName}}
-                </td>
+                <td>{{data?.FirstName}}</td>
                 <td>{{data?.PhoneNumber}}</td>
                 <td>{{data?.Email}}</td>
                 <td>{{data?.Vehicle}}</td>
                 <td>{{data?.JobTitle}}</td>
-                <td><button mat-raised-button class="EditData" (click)="onEdit()">Edit Data</button>
+                
+                <td><button mat-raised-button class="EditData" (click)="onEdit();sharedService.curretUser=data">Edit Data</button>
                     <button mat-raised-button class="DeleteUser" (click)="onDelete(data)">Delete User</button>
                 </td>
             </tr>

@@ -6,16 +6,48 @@ import { SharedService } from '../serives/shared.service';
 @Component({
   selector: 'app-edit-user',
   templateUrl: './edit-user.component.html',
-  styleUrl: './edit-user.component.css'
+  styleUrls: ['./edit-user.component.css'], 
 })
-export class EditUserComponent implements OnInit{
-  form!: FormGroup<any>;
+export class EditUserComponent implements OnInit {
+  formData: any;
+
+  onSaveData() {
+    
   
-  constructor(private fb: FormBuilder,public sharedService: SharedService, public _apiservice: ApiServiceService){}
-  submitForm():any{
+    this.formData = this.saveData();
+    // console.log(this.formData);
+    this.sharedService.updateNewData(this.formData);
     
   }
+
+  saveData(): any {
+    return {
+      id:this.sharedService.curretUser.id,
+      FirstName: this.form.get('name')?.value,
+      PhoneNumber: this.form.get('phoneNumber')?.value,
+      Email: this.form.get('email')?.value,
+      Vehicle: this.form.get('vehicle')?.value,
+      JobTitle: this.form.get('jobTitle')?.value,
+    };
+  }
+
+
+  autofillForm() {
+    this.form.patchValue({
+      name: this.sharedService.curretUser.FirstName,
+      phoneNumber: this.sharedService.curretUser.PhoneNumber,
+      email: this.sharedService.curretUser.Email,
+      vehicle: this.sharedService.curretUser.Vehicle,
+      jobTitle: this.sharedService.curretUser.JobTitle,
+    });
+  }
+
+  form!: FormGroup;
+
+  constructor(private fb: FormBuilder,public sharedService: SharedService,public _apiservice: ApiServiceService) {}
   ngOnInit() {
+    // console.log(this.sharedService.curretUser);
+    
     this.form = this.fb.group({
       name: [''],
       phoneNumber: [''],
@@ -24,24 +56,5 @@ export class EditUserComponent implements OnInit{
       jobTitle: [''],
     });
     this.autofillForm();
-    this._apiservice.getdata().subscribe((res: any) => {
-
-      this.sharedService.newData = res;
-      console.log(res);
-      
-    },
-      (error) => {
-        console.error('error is here', error);
-      })
   }
-
-  autofillForm(){
-    
-    // name:
-    // phoneNumber:
-    // email:
-    // vehicle:
-    // jobTitle:
-  }
-
 }

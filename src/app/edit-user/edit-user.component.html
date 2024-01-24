@@ -1,7 +1,7 @@
 <h1>Edit</h1>
 
 <div mat-dialog-content>
-<form #dialogForm (ngSubmit)="submitForm()" [formGroup]="form">
+<form #dialogForm  [formGroup]="form">
     <div>
       <label for="name">Name:</label>
       <input type="text" id="name" formControlName="name" required> 
@@ -28,7 +28,7 @@
     </div>
   
     <div>
-      <button matDialogClose type="submit">Save</button>
+      <button matDialogClose type="submit" (click)="onSaveData()">Save</button>
       <button matDialogClose>Cancel</button>
     </div>
   </form>
