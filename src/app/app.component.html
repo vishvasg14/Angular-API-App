@@ -5,10 +5,20 @@
 </nav>
 
 <body>
-    <div class="btns">
-        <button mat-raised-button color="primary" (click)="this.sharedService.onClickPopup='addUser';showPopUp()">ADD
-            USER</button>
-    </div>
+    <div class="container">
+        <div class="left-section">
+          <div class="btns">
+            <button mat-raised-button color="primary" (click)="this.sharedService.onClickPopup='addUser';showPopUp()">ADD USER</button>
+          </div>
+        </div>
+        <div class="right-section">
+          <div class="searchbtn">
+            <input id="searchinfo" type="search" placeholder="Search Here" [(ngModel)]="searchQuery">
+            <button mat-raised-button type="button" (click)="onSearch()">Search</button>
+          </div>
+        </div>
+      </div>
+
     <div class="dataTable">
         <table>
             <tr>
@@ -22,21 +32,23 @@
             </tr>
             <!-- by using for loop to fetch specific data from api store it 
             in table like below -->
-            <tr *ngFor="let i = index;let data of sharedService.newData | paginate: { itemsPerPage: 10, currentPage: currentPage, totalItems: sharedService.newData.length }">
+            <tr
+                *ngFor="let i = index;let data of sharedService.newData | paginate: { itemsPerPage: 10, currentPage: currentPage, totalItems: sharedService.newData.length }">
                 <td>{{(currentPage - 1) * 10 + i + 1 }}</td>
                 <td>{{data?.FirstName}}</td>
                 <td>{{data?.PhoneNumber}}</td>
                 <td>{{data?.Email}}</td>
                 <td>{{data?.Vehicle}}</td>
                 <td>{{data?.JobTitle}}</td>
-                
-                <td><button mat-raised-button class="EditData" (click)="onEdit();data.id=i;sharedService.curretUser=data">Edit Data</button>
+
+                <td><button mat-raised-button class="EditData"
+                        (click)="onEdit();data.id=i;sharedService.curretUser=data">Edit Data</button>
                     <button mat-raised-button class="DeleteUser" (click)="onDelete(data)">Delete User</button>
                 </td>
             </tr>
-            
+
         </table>
-        <pagination-controls (pageChange)="pageChanged($event)" ></pagination-controls>
+        <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
     </div>
 
 </body>

@@ -18,7 +18,7 @@ export class SharedService {
   public newData:any[]=[];
   public curretUser:any;
   
-
+  
   
   updateNewData(updatedData: any) {
     // console.log(this.newData);
@@ -28,6 +28,7 @@ export class SharedService {
     if (indexToUpdate !== -1) {
       this.newData[indexToUpdate] = updatedData;
     } else {
+      
       console.error('User not found in the shared data array');
       // console.log(indexToUpdate);
       

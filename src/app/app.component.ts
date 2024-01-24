@@ -17,9 +17,13 @@ export class AppComponent {
   onSaveData: any;
   newData: any;
 
-  totalItems = 100; 
-  itemsPerPage = 10; 
-  currentPage = 1; 
+  totalItems = 100;
+  itemsPerPage = 10;
+  currentPage = 1;
+
+  filteredData: any[] = [];
+  searchQuery: string = '';
+ 
 
   constructor(public sharedService: SharedService, public _apiservice: ApiServiceService, private dialog: MatDialog) { }
 
@@ -69,7 +73,31 @@ export class AppComponent {
 
   pageChanged(event: any): void {
     this.currentPage = event;
+  }
 
+  onSearch() {
+    // debugger
+    const query = this.searchQuery.toLowerCase();
+  
+    if (query.trim() === '') {
+      // If the search query is empty, return the original data
+      this.filteredData = this.sharedService.newData;
+    } else {
+      // Otherwise, filter the data based on the search query
+      this.filteredData = this.sharedService.newData.filter(item => {
+        const searchableFields = ["FirstName", 'PhoneNumber', 'Email', 'Vehicle', 'JobTitle'];
+        return searchableFields.some(field => {
+          const fieldValue = String(item[field]).toLowerCase();
+          return fieldValue.includes(query);
+        });
+        
+      });
+
+      console.log('Filtered Data:', this.filteredData);
+    }
+  
+  }
+  
     
-}
-}
+  }
+  
