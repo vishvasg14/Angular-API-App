@@ -17,7 +17,7 @@ export class SharedService {
   public onClickPopup:string=''
   public newData:any[]=[];
   public curretUser:any;
-  
+  public formSubmitted:boolean=false;  
   
   
   updateNewData(updatedData: any) {

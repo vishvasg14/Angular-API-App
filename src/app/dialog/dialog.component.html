@@ -4,31 +4,33 @@
 <form #dialogForm (ngSubmit)="submitForm()" [formGroup]="form">
     <div>
       <label for="name">Name:</label>
-      <input type="text" id="name" formControlName="name" required>
+      <input type="text" id="name" formControlName="name" [ngClass]="{'form-submitted': formSubmitted}" required>
     </div>
   
     <div>
       <label for="phoneNumber">Phone Number:</label>
-      <input type="text" id="phoneNumber" formControlName="phoneNumber" required>
+      <input type="text" id="phoneNumber" formControlName="phoneNumber" [ngClass]="{'form-submitted': formSubmitted}" required>
     </div>
   
     <div>
       <label for="email">Email:</label>
-      <input type="email" id="email" formControlName="email" required>
+      <input type="email" id="email" formControlName="email" [ngClass]="{'form-submitted': formSubmitted}" required>
     </div>
   
     <div>
       <label for="vehicle">Vehicle:</label>
-      <input type="text" id="vehicle" formControlName="vehicle" required>
+      <input type="text" id="vehicle" formControlName="vehicle" [ngClass]="{'form-submitted': formSubmitted}" required>
     </div>
   
     <div>
       <label for="jobTitle">Job Title:</label>
-      <input type="text" id="jobTitle" formControlName="jobTitle" required>
+      <input type="text" id="jobTitle" formControlName="jobTitle" [ngClass]="{'form-submitted': formSubmitted}" required>
     </div>
-  
+    <div *ngIf="!isFormValid()">
+      <div>Please fill in all required fields with valid values.</div>
+    </div>
     <div>
-      <button matDialogClose type="submit">Save</button>
+      <button matDialogClose type="submit" >Save</button>
       <button matDialogClose>Cancel</button>
     </div>
   </form>

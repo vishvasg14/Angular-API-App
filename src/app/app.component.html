@@ -34,7 +34,7 @@
             <tr
                 *ngFor="let i = index;let data of sharedService.newData | paginate: { itemsPerPage: 10, currentPage: currentPage, totalItems: sharedService.newData.length }">
                 <td>{{(currentPage - 1) * 10 + i + 1 }}</td>
-                <td>{{data?.FirstName}}</td>
+                <td>{{data?.FirstName}}</td>  
                 <td>{{data?.PhoneNumber}}</td>
                 <td>{{data?.Email}}</td>
                 <td>{{data?.Vehicle}}</td>
