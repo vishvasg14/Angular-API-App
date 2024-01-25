@@ -59,7 +59,7 @@ export class AppComponent {
     })
   }
   async ngOnInit() {
-    debugger
+    // debugger
     this.sharedService.newData= await this.getData();
   }
 
