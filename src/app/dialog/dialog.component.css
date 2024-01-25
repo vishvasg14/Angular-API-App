@@ -1,10 +1,10 @@
 /* dialog-form.component.css */
 
 h1 {
-  color: #e41515; /* Header text color */
-  margin-bottom: 15px;
+  color: #4285f4; /* Header text color */
   text-align: center;
-  
+  margin-top: 15px;
+  margin-bottom: 0%;
 }
 
 mat-dialog-content {

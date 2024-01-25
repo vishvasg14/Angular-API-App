@@ -59,30 +59,36 @@ export class AppComponent {
     })
   }
 
-  ngOnInit() {
-    this._apiservice.getdata().subscribe((res: any) => {
+  async ngOnInit() {
+    this.sharedService.newData= await this.getData();
+  }
 
-      this.sharedService.newData = res;
-      // console.log(res);
-
-    },
-      (error) => {
-        console.error('error is here', error);
-      })
+  getData():any{
+    return new Promise((resolve)=>{
+      this._apiservice.getdata().subscribe((res: any) => {
+        resolve(res);
+        // console.log(res);
+  
+      },
+        (error) => {
+          console.error('error is here', error);
+        })
+    })
   }
 
   pageChanged(event: any): void {
     this.currentPage = event;
   }
 
-  onSearch() {
+  async onSearch() {
     // debugger
     const query = this.searchQuery.toLowerCase();
   
     if (query.trim() === '') {
       // If the search query is empty, return the original data
-      this.filteredData = this.sharedService.newData;
+      this.sharedService.newData= await this.getData();
     } else {
+      this.sharedService.newData= await this.getData();
       // Otherwise, filter the data based on the search query
       this.filteredData = this.sharedService.newData.filter(item => {
         const searchableFields = ["FirstName", 'PhoneNumber', 'Email', 'Vehicle', 'JobTitle'];
@@ -93,7 +99,8 @@ export class AppComponent {
         
       });
 
-      console.log('Filtered Data:', this.filteredData);
+      // console.log('Filtered Data:', this.filteredData);
+      this.sharedService.newData=this.filteredData
     }
   
   }

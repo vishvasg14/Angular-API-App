@@ -13,8 +13,7 @@
         </div>
         <div class="right-section">
           <div class="searchbtn">
-            <input id="searchinfo" type="search" placeholder="Search Here" [(ngModel)]="searchQuery">
-            <button mat-raised-button type="button" (click)="onSearch()">Search</button>
+            <input id="searchinfo" type="search" (keyup)="onSearch()" placeholder="Search Here" [(ngModel)]="searchQuery">
           </div>
         </div>
       </div>
