@@ -128,7 +128,3 @@ tr:nth-child(even) {
 .DeleteUser:hover {
   background-color: #45a049;
 }
-
-.selected-row {
-  background-color: #241d59;
-}

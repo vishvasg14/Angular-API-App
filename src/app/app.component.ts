@@ -58,8 +58,8 @@ export class AppComponent {
       height: '550px'
     })
   }
-
   async ngOnInit() {
+    debugger
     this.sharedService.newData= await this.getData();
   }
 
