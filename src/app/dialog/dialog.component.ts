@@ -41,17 +41,17 @@ formSubmitted: any;
         this.toastr.error(errorMessage, 'Error');
     }
 }
-  
+
 
 
   ngOnInit(): void {
 
       this.form = this.fb.group({
-        name: ['', [Validators.maxLength(25), Validators.minLength(2)]],
+        name: ['', [Validators.maxLength(255), Validators.minLength(2)]],
         phoneNumber: ['', Validators.pattern(/^(\+\d{1,2}\s?)?(\(\d{1,4}\)|\d{1,4})([\s.-]?\d{1,10}){1,5}$/)],
         email: ['', Validators.email],
-        vehicle: ['',[Validators.maxLength(25), Validators.minLength(2)]],
-        jobTitle: ['',[Validators.maxLength(25), Validators.minLength(2)]],
+        vehicle: ['',[Validators.maxLength(255), Validators.minLength(2)]],
+        jobTitle: ['',[Validators.maxLength(255), Validators.minLength(2)]],
       });
   }
   isFormValid(): boolean {
