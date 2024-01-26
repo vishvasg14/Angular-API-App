@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiServiceService } from '../serives/api-service.service';
 import { SharedService } from '../serives/shared.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-edit-user',
   templateUrl: './edit-user.component.html',
@@ -9,20 +10,34 @@ import { SharedService } from '../serives/shared.service';
 })
 export class EditUserComponent implements OnInit {
   
-  constructor(private fb: FormBuilder,public sharedService: SharedService,public _apiservice: ApiServiceService) {}
+  constructor(private toastr: ToastrService,private fb: FormBuilder,public sharedService: SharedService,public _apiservice: ApiServiceService) {}
   formData: any;
   formSubmitted: any;
 
   onSaveData() {
-    this.formData = this.saveData();
-    // console.log(this.formData.id);
-    if (this.formData) {
-      
+    try {
+        this.formData = this.saveData();
+
+        if (this.formData) {
+            this.sharedService.updateNewData(this.formData);
+
+            const successMessage = `Data saved successfully!`;
+
+            this.toastr.success(successMessage);
+        } else {
+            const errorMessage = `Error saving data. Please check your input and try again.`;
+
+            this.toastr.error(errorMessage);
+        }
+    } catch (error) {
+        const errorMessage = `An unexpected error occurred while saving data. Please try again later.`;
+
+        this.toastr.error(errorMessage);
+        console.error(error); // Log the error for debugging purposes
     }
-    this.sharedService.updateNewData(this.formData);
-    // console.log(this.formData);
-  
-  }
+}
+
+
   saveData(): any {
     
     if (this.form.valid) {
