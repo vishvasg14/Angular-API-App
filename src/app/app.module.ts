@@ -18,7 +18,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
   declarations: [
     AppComponent,
     DialogComponent,
-    EditUserComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +28,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FormsModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

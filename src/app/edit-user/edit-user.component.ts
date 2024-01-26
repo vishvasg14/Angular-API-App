@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiServiceService } from '../serives/api-service.service';
 import { SharedService } from '../serives/shared.service';
-
 @Component({
   selector: 'app-edit-user',
   templateUrl: './edit-user.component.html',
@@ -10,19 +9,22 @@ import { SharedService } from '../serives/shared.service';
 })
 export class EditUserComponent implements OnInit {
   
+  constructor(private fb: FormBuilder,public sharedService: SharedService,public _apiservice: ApiServiceService) {}
   formData: any;
   formSubmitted: any;
 
   onSaveData() {
-    
-  
     this.formData = this.saveData();
-    // console.log(this.formData);
+    // console.log(this.formData.id);
+    if (this.formData) {
+      
+    }
     this.sharedService.updateNewData(this.formData);
-    
+    // console.log(this.formData);
+  
   }
-
   saveData(): any {
+    
     if (this.form.valid) {
     return {
       id:this.sharedService.curretUser.id,
@@ -31,6 +33,7 @@ export class EditUserComponent implements OnInit {
       Email: this.form.get('email')?.value,
       Vehicle: this.form.get('vehicle')?.value,
       JobTitle: this.form.get('jobTitle')?.value,
+      
     }
   }
   
@@ -38,6 +41,8 @@ export class EditUserComponent implements OnInit {
 
 
   autofillForm() {
+    // console.log(this.sharedService.curretUser.id);
+    
     this.form.patchValue({
       name: this.sharedService.curretUser.FirstName,
       phoneNumber: this.sharedService.curretUser.PhoneNumber,
@@ -49,16 +54,15 @@ export class EditUserComponent implements OnInit {
 
   form!: FormGroup;
 
-  constructor(private fb: FormBuilder,public sharedService: SharedService,public _apiservice: ApiServiceService) {}
   ngOnInit() {
     // console.log(this.sharedService.curretUser);
     
     this.form = this.fb.group({ 
-      name: ['', [Validators.maxLength(25), Validators.minLength(2)]],
-      phoneNumber: ['', Validators.pattern(/^(\+\d{1,2}\s?)?(\(\d{1,4}\)|\d{1,4})([\s.-]?\d{1,10}){1,5}$/)],
+      name: ['', [Validators.maxLength(255), Validators.minLength(2)]],
+      phoneNumber: ['', Validators.pattern(/^[0-9]{10}$/)],
       email: ['', Validators.email],
-      vehicle: ['',[Validators.maxLength(25), Validators.minLength(2)]],
-      jobTitle: ['',[Validators.maxLength(25), Validators.minLength(2)]],
+      vehicle: ['',[Validators.maxLength(255), Validators.minLength(2)]],
+      jobTitle: ['',[Validators.maxLength(255), Validators.minLength(2)]],
     });
     this.autofillForm();
   }
