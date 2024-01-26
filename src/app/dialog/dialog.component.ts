@@ -2,6 +2,7 @@ import { Component ,OnInit } from '@angular/core';
 import { SharedService } from '../serives/shared.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators  } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-dialog',
   templateUrl: './dialog.component.html',
@@ -12,7 +13,7 @@ export class DialogComponent implements OnInit{
   getvalues:any;
   inputdata:any;
 formSubmitted: any;
-  constructor(private fb: FormBuilder, public sharedService:SharedService , private ref:MatDialogRef<DialogComponent> ){}
+  constructor(private toastr: ToastrService,private fb: FormBuilder, public sharedService:SharedService , private ref:MatDialogRef<DialogComponent> ){}
 
   closePop(){
     this.ref.close();
@@ -20,22 +21,27 @@ formSubmitted: any;
 
   submitForm(): any {
     if (this.form.valid) {
-      this.getvalues=this.form.value;
-      // console.log(this.getvalues);
-      let jsonData={
-        "FirstName": this.getvalues.name,
-        "PhoneNumber": this.getvalues.phoneNumber,
-        "Email": this.getvalues.email,
-        "Vehicle": this.getvalues.vehicle,
-        "JobTitle": this.getvalues.jobTitle,
-        "id": this.sharedService.newData.length+1
+        this.getvalues = this.form.value;
+
+        let jsonData = {
+            "FirstName": this.getvalues.name,
+            "PhoneNumber": this.getvalues.phoneNumber,
+            "Email": this.getvalues.email,
+            "Vehicle": this.getvalues.vehicle,
+            "JobTitle": this.getvalues.jobTitle,
+            "id": this.sharedService.newData.length + 1
+        };
+
+        this.sharedService.newData.push(jsonData);
+
+        const successMessage = 'Form submitted successfully!';
+        this.toastr.success(successMessage, 'Success');
+    } else {
+        const errorMessage = 'Please fill out all required fields correctly before submitting the form.';
+        this.toastr.error(errorMessage, 'Error');
     }
-      
-    this.sharedService.newData.push(jsonData)
-      
-    }
-  }
- 
+}
+  
 
 
   ngOnInit(): void {
