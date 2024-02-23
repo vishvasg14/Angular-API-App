@@ -9,7 +9,7 @@ export class ApiServiceService {
   constructor(private _http:HttpClient) { }
 
   getdata(){
-    return this._http.get('https://apigenerator.dronahq.com/api/b5vFhWlm/UserData');
+    return this._http.get('https://apigenerator.dronahq.com/api/39KrdvyX/data');
   }
   
   
